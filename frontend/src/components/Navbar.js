@@ -9,11 +9,13 @@ import {
   FiX,
   FiSettings,
   FiHeart,
+  FiChevronDown,
 } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
   const { user, isAuthenticated, logout } = useAuth();
   const { getCartCount } = useCart();
   const navigate = useNavigate();
@@ -31,83 +33,95 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center group flex-shrink-0">
             <div className="flex items-center">
-              <FiHeart className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600 mr-1 sm:mr-2 group-hover:text-amber-700 transition-colors" />
-              <span className="text-lg sm:text-2xl font-bold text-amber-600 group-hover:text-amber-700 transition-colors">
+              <span className="text-2xl font-bold text-amber-600 group-hover:text-amber-700 transition-colors whitespace-nowrap">
                 ProductHandmade
               </span>
             </div>
-            <span className="ml-2 text-xs text-gray-500 hidden lg:block italic">
+            <span className="ml-2 text-xs text-gray-500 hidden xl:block italic whitespace-nowrap">
               Built with Love
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="flex items-baseline space-x-6">
               <Link
                 to="/"
-                className="text-gray-700 hover:text-amber-600 px-3 py-2 transition-colors font-medium"
+                className="text-gray-700 hover:text-amber-600 px-3 py-2 transition-colors font-medium whitespace-nowrap"
               >
                 Home
               </Link>
               <Link
                 to="/products"
-                className="text-gray-700 hover:text-amber-600 px-3 py-2 transition-colors font-medium"
+                className="text-gray-700 hover:text-amber-600 px-3 py-2 transition-colors font-medium whitespace-nowrap"
               >
                 Shop
               </Link>
               <Link
                 to="/about"
-                className="text-gray-700 hover:text-amber-600 px-3 py-2 transition-colors font-medium"
+                className="text-gray-700 hover:text-amber-600 px-3 py-2 transition-colors font-medium whitespace-nowrap"
               >
                 About
               </Link>
               <Link
                 to="/contact"
-                className="text-gray-700 hover:text-amber-600 px-3 py-2 transition-colors font-medium"
+                className="text-gray-700 hover:text-amber-600 px-3 py-2 transition-colors font-medium whitespace-nowrap"
               >
                 Contact
               </Link>
 
-              {/* Admin Links - Only show for admin users */}
+              {/* Admin Dropdown - Only show for admin users */}
               {isAuthenticated && user?.isAdmin && (
-                <>
-                  <Link
-                    to="/admin/products/manage"
-                    className="text-orange-600 hover:text-orange-700 px-3 py-2 transition-colors font-semibold flex items-center"
+                <div className="relative">
+                  <button
+                    onClick={() => setIsAdminOpen(!isAdminOpen)}
+                    className="flex items-center space-x-1 text-orange-600 hover:text-orange-700 px-3 py-2 transition-colors font-semibold whitespace-nowrap"
                   >
-                    <FiSettings className="mr-1" />
-                    Products
-                  </Link>
-                  <Link
-                    to="/admin/ordermanagement"
-                    className="text-orange-600 hover:text-orange-700 px-3 py-2 transition-colors font-semibold flex items-center"
-                  >
-                    <FiSettings className="mr-1" />
-                    Orders
-                  </Link>
-                  <Link
-                    to="/admin/delivery-boys"
-                    className="text-orange-600 hover:text-orange-700 px-3 py-2 transition-colors font-semibold flex items-center"
-                  >
-                    <FiSettings className="mr-1" />
-                    Delivery
-                  </Link>
-                  <Link
-                    to="/admin/delete-data"
-                    className="text-red-600 hover:text-red-700 px-3 py-2 transition-colors font-semibold flex items-center"
-                  >
-                    <FiSettings className="mr-1" />
-                    Manage Data
-                  </Link>
-                </>
+                    <FiSettings className="h-4 w-4" />
+                    <span>Admin</span>
+                    <FiChevronDown className="h-4 w-4" />
+                  </button>
+
+                  {isAdminOpen && (
+                    <div className="absolute right-0 mt-2 w-56 bg-white rounded-md shadow-xl py-1 z-50 border border-gray-200">
+                      <Link
+                        to="/admin/products/manage"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                        onClick={() => setIsAdminOpen(false)}
+                      >
+                        Manage Products
+                      </Link>
+                      <Link
+                        to="/admin/ordermanagement"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                        onClick={() => setIsAdminOpen(false)}
+                      >
+                        Order Management
+                      </Link>
+                      <Link
+                        to="/admin/delivery-boys"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors"
+                        onClick={() => setIsAdminOpen(false)}
+                      >
+                        Delivery Boys
+                      </Link>
+                      <Link
+                        to="/admin/delete-data"
+                        className="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors border-t"
+                        onClick={() => setIsAdminOpen(false)}
+                      >
+                        Delete Data
+                      </Link>
+                    </div>
+                  )}
+                </div>
               )}
 
               {/* Delivery Boy Dashboard */}
               {isAuthenticated && user?.isDeliveryBoy && (
                 <Link
                   to="/delivery-boy/dashboard"
-                  className="text-amber-600 hover:text-amber-700 px-3 py-2 transition-colors font-semibold flex items-center"
+                  className="text-amber-600 hover:text-amber-700 px-3 py-2 transition-colors font-semibold flex items-center whitespace-nowrap"
                 >
                   <FiSettings className="mr-1" />
                   Dashboard
@@ -117,10 +131,10 @@ const Navbar = () => {
           </div>
 
           {/* Right side items */}
-          <div className="flex items-center space-x-2 sm:space-x-4">
+          <div className="flex items-center space-x-3">
             {/* Cart Icon */}
             <Link to="/cart" className="relative p-2 group">
-              <FiShoppingCart className="h-5 w-5 sm:h-6 sm:w-6 text-gray-700 group-hover:text-amber-600 transition-colors" />
+              <FiShoppingCart className="h-6 w-6 text-gray-700 group-hover:text-amber-600 transition-colors" />
               {getCartCount() > 0 && (
                 <span className="absolute -top-1 -right-1 bg-amber-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold shadow-md">
                   {getCartCount()}
@@ -136,7 +150,7 @@ const Navbar = () => {
                   className="flex items-center space-x-2 text-gray-700 hover:text-amber-600 p-2 transition-colors"
                 >
                   <FiUser className="h-5 w-5" />
-                  <span className="hidden lg:block font-medium">
+                  <span className="hidden xl:block font-medium max-w-[150px] truncate">
                     {user?.name}
                   </span>
                 </button>
@@ -170,13 +184,13 @@ const Navbar = () => {
               <div className="hidden md:flex items-center space-x-2">
                 <Link
                   to="/login"
-                  className="text-gray-700 hover:text-amber-600 px-3 py-2 transition-colors font-medium"
+                  className="text-gray-700 hover:text-amber-600 px-3 py-2 transition-colors font-medium whitespace-nowrap"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-amber-600 text-white px-4 py-2 rounded-md hover:bg-amber-700 transition-colors shadow-md hover:shadow-lg font-medium"
+                  className="bg-amber-600 text-white px-4 py-2 rounded-md hover:bg-amber-700 transition-colors shadow-md hover:shadow-lg font-medium whitespace-nowrap"
                 >
                   Sign Up
                 </Link>
