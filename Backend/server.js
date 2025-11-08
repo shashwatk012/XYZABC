@@ -17,6 +17,7 @@ const orderRoutes = require("./routes/orderRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
 const deliveryBoyRoutes = require("./routes/deliveryBoyRoutes");
 const deliveryBoyVerificationRoutes = require("./routes/deliveryBoyVerificationRoutes");
+const adminCleanupRoutes = require("./routes/adminCleanupRoutes");
 
 const app = express();
 
@@ -102,6 +103,8 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/delivery-boy", deliveryBoyRoutes);
 app.use("/api/admin/delivery-boys", deliveryBoyVerificationRoutes);
+// Add this line with other routes
+app.use("/api/admin/cleanup", adminCleanupRoutes);
 
 // Catch-all route for undefined endpoints
 app.use("/api/*", (req, res) => {

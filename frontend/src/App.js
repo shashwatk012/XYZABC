@@ -42,6 +42,7 @@ import PaymentStatus from "./pages/PaymentStatus";
 import SabPaisaPaymentForm from "./pages/SabPaisaPaymentForm";
 // Styles
 import "./styles/global.css";
+import DatabaseCleanup from "./pages/admin/DatabaseCleanup";
 
 function App() {
   return (
@@ -116,6 +117,14 @@ function App() {
                   element={
                     <ProtectedRoute requiredRole="deliveryBoy">
                       <DeliveryBoyDashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/admin/delete-data"
+                  element={
+                    <ProtectedRoute requiredRole="admin">
+                      <DatabaseCleanup />
                     </ProtectedRoute>
                   }
                 />

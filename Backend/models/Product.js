@@ -23,55 +23,16 @@ const productSchema = new mongoose.Schema(
     category: {
       type: String,
       required: true,
-      enum: ["Men", "Women", "Kids", "Accessories"],
+      enum: ["Hand made products", "Others"],
     },
     subCategory: {
       type: String,
       required: true,
-      enum: ["Topwear", "Bottomwear", "Winterwear", "Shoes", "Bags", "Jewelry"],
+      enum: ["Decorations", "Art & Craft", "Others"],
     },
     sizes: [
       {
         type: String,
-        enum: [
-          // Standard clothing sizes
-          "XS",
-          "S",
-          "M",
-          "L",
-          "XL",
-          "XXL",
-          "XXXL",
-          // Kids age sizes
-          "2-3Y",
-          "4-5Y",
-          "6-7Y",
-          "8-9Y",
-          "10-11Y",
-          "12-13Y",
-          "14-15Y",
-          // Numeric sizes for jeans/pants
-          "28",
-          "30",
-          "32",
-          "34",
-          "36",
-          "38",
-          "40",
-          "42",
-          "44",
-          // Shoe sizes
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "11",
-          "12",
-          // Free size
-          "Free Size",
-          "One Size",
-        ],
       },
     ],
     colors: [String],

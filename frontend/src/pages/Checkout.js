@@ -459,7 +459,7 @@ const Checkout = () => {
                     </label>
                   </div>
 
-                  <div className="flex items-center">
+                  {/* <div className="flex items-center">
                     <input
                       id="cashfree"
                       name="paymentMethod"
@@ -475,7 +475,7 @@ const Checkout = () => {
                     >
                       💳 Online Payment (UPI, Cards, Net Banking)
                     </label>
-                  </div>
+                  </div> */}
                 </div>
                 {/* <div className="flex items-center">
                   <input
@@ -514,7 +514,7 @@ const Checkout = () => {
                 {paymentMethod === "COD" && (
                   <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-md">
                     <p className="text-sm text-green-800">
-                      Pay when your order arrives at your doorstep
+                      Pay when you receive your order
                     </p>
                   </div>
                 )}
@@ -566,26 +566,49 @@ const Checkout = () => {
 
           {/* Order Summary */}
           <div className="bg-white rounded-lg shadow-md p-8">
-            <h2 className="text-2xl font-bold mb-6">Order Summary</h2>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold">Order Summary</h2>
+              <span className="text-xs bg-amber-100 text-amber-800 px-3 py-1 rounded-full font-semibold">
+                ✨ Handcrafted
+              </span>
+            </div>
 
             <div className="space-y-4 mb-6">
               {cartItems.map((item) => (
-                <div key={item.cartId} className="flex items-center space-x-4">
-                  <img
-                    src={item.images[0] || "/placeholder-image.jpg"}
-                    alt={item.name}
-                    className="w-16 h-16 object-cover rounded"
-                  />
+                <div
+                  key={item.cartId}
+                  className="flex items-center space-x-4 pb-4 border-b border-gray-100 last:border-0"
+                >
+                  <div className="relative">
+                    <img
+                      src={item.images[0] || "/placeholder-image.jpg"}
+                      alt={item.name}
+                      className="w-16 h-16 object-cover rounded"
+                    />
+                    {/* Small handcrafted badge */}
+                    <div className="absolute -top-1 -right-1 bg-amber-500 text-white rounded-full p-1">
+                      <svg
+                        className="w-2 h-2"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    </div>
+                  </div>
                   <div className="flex-1">
-                    <h3 className="font-medium">{item.name}</h3>
-                    <p className="text-sm text-gray-600">
+                    <h3 className="font-medium text-gray-900">{item.name}</h3>
+                    <p className="text-xs text-gray-500 italic">
+                      Uniquely handcrafted piece
+                    </p>
+                    <p className="text-sm text-gray-600 mt-1">
                       Size: {item.selectedSize} | Color: {item.selectedColor}
                     </p>
                     <p className="text-sm text-gray-600">
                       Qty: {item.quantity} × ₹{item.price.toLocaleString()}
                     </p>
                   </div>
-                  <div className="text-lg font-semibold">
+                  <div className="text-lg font-semibold text-gray-900">
                     ₹{(item.price * item.quantity).toLocaleString()}
                   </div>
                 </div>
@@ -593,28 +616,124 @@ const Checkout = () => {
             </div>
 
             <div className="border-t pt-6">
-              <div className="flex justify-between mb-2">
+              <div className="flex justify-between mb-2 text-gray-700">
                 <span>Subtotal</span>
                 <span>₹{subtotal.toLocaleString()}</span>
               </div>
 
               <div className="border-t pt-2 flex justify-between text-lg font-bold">
                 <span>Total</span>
-                <span className="text-green-600">
+                <span className="text-amber-600">
                   ₹{total.toLocaleString()}
                 </span>
               </div>
             </div>
 
+            {/* Artisan Impact Message */}
+            <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+              <div className="flex items-start">
+                <svg
+                  className="w-5 h-5 text-amber-600 mr-2 flex-shrink-0 mt-0.5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <div>
+                  <p className="text-sm font-semibold text-amber-900">
+                    Thank You for Supporting Artisans
+                  </p>
+                  <p className="text-xs text-amber-800 mt-1">
+                    Your purchase directly supports skilled craftspeople and
+                    their families
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {paymentMethod === "CASHFREE" && (
-              <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-md">
-                <p className="text-sm text-green-800 text-center">
-                  🔒 <strong>100% Secure</strong>
-                  <br />
-                  Your payment is encrypted and secure
-                </p>
+              <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+                <div className="flex items-center justify-center">
+                  <svg
+                    className="w-5 h-5 text-green-600 mr-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    />
+                  </svg>
+                  <div className="text-center">
+                    <p className="text-sm font-semibold text-green-800">
+                      🔒 100% Secure Payment
+                    </p>
+                    <p className="text-xs text-green-700 mt-0.5">
+                      Your payment is encrypted and secure
+                    </p>
+                  </div>
+                </div>
               </div>
             )}
+
+            {/* Handmade Product Guarantees */}
+            <div className="mt-6 pt-6 border-t space-y-3">
+              <div className="flex items-start text-sm">
+                <svg
+                  className="w-4 h-4 text-amber-600 mr-2 flex-shrink-0 mt-0.5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="text-gray-700">
+                  Each piece carefully handcrafted
+                </span>
+              </div>
+              <div className="flex items-start text-sm">
+                <svg
+                  className="w-4 h-4 text-amber-600 mr-2 flex-shrink-0 mt-0.5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="text-gray-700">
+                  Packaged with love and care
+                </span>
+              </div>
+              <div className="flex items-start text-sm">
+                <svg
+                  className="w-4 h-4 text-amber-600 mr-2 flex-shrink-0 mt-0.5"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="text-gray-700">
+                  Quality guaranteed by artisans
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

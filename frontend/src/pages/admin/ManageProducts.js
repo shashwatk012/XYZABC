@@ -340,10 +340,8 @@ const ManageProducts = () => {
               className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="">All Categories</option>
-              <option value="Men">Men</option>
-              <option value="Women">Women</option>
-              <option value="Kids">Kids</option>
-              <option value="Accessories">Accessories</option>
+              <option value="Hand made products">Hand made products</option>
+              <option value="Others">Others</option>
             </select>
 
             <select
@@ -489,26 +487,6 @@ const ManageProducts = () => {
 
                       <div>
                         <h4 className="text-sm font-semibold text-gray-900 mb-2">
-                          Variants
-                        </h4>
-                        <div className="space-y-1">
-                          {product.sizes && product.sizes.length > 0 && (
-                            <p className="text-sm text-gray-600">
-                              <span className="font-medium">Sizes:</span>{" "}
-                              {product.sizes.join(", ")}
-                            </p>
-                          )}
-                          {product.colors && product.colors.length > 0 && (
-                            <p className="text-sm text-gray-600">
-                              <span className="font-medium">Colors:</span>{" "}
-                              {product.colors.join(", ")}
-                            </p>
-                          )}
-                        </div>
-                      </div>
-
-                      <div>
-                        <h4 className="text-sm font-semibold text-gray-900 mb-2">
                           Pricing
                         </h4>
                         <div className="space-y-1">
@@ -524,11 +502,6 @@ const ManageProducts = () => {
                               ₹{product.originalPrice}
                             </p>
                           )}
-                          <p className="text-sm text-gray-600">
-                            <span className="font-medium">Rating:</span>{" "}
-                            {product.rating || 0}/5 ({product.numReviews || 0}{" "}
-                            reviews)
-                          </p>
                         </div>
                       </div>
                     </div>

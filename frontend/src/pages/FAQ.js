@@ -10,86 +10,58 @@ const FAQ = () => {
     {
       id: 1,
       category: "orders",
-      question: "How do I track my order?",
+      question: "How do I place an order?",
       answer:
-        "You can track your order by logging into your account and visiting the 'My Orders' section. You'll also receive tracking information via email and SMS once your order is shipped.",
+        "Browse my shop, choose your favorite handmade item, and checkout. All orders are packed and delivered by me, currently within Mumbai only.",
     },
     {
       id: 2,
       category: "orders",
-      question: "Can I modify or cancel my order?",
+      question: "Do you offer custom orders?",
       answer:
-        "Orders can be modified or cancelled within 2 hours of placing them. After this time, the order enters processing and cannot be changed. Please contact customer support immediately if you need to make changes.",
+        "Yes! I love bringing your ideas to life. Message me via the contact form or WhatsApp to design something unique just for you. All custom and standard orders are delivered in Mumbai.",
     },
     {
       id: 3,
       category: "shipping",
-      question: "What are the shipping charges?",
+      question: "Where do you deliver?",
       answer:
-        "We offer free shipping on orders above ₹999. For orders below ₹999, shipping charges are ₹99. Express delivery (2-3 days) is available for ₹149.",
+        "Right now, I deliver only within Mumbai. If you're outside Mumbai, please contact me — I hope to expand soon as my business grows.",
     },
     {
       id: 4,
       category: "shipping",
-      question: "Do you deliver to all locations in India?",
+      question: "How long will my order take?",
       answer:
-        "Yes, we deliver pan-India. However, delivery times may vary based on location. Metro cities typically receive orders in 2-4 days, while remote areas may take 6-8 days.",
+        "Most orders are delivered in 2-4 days, depending on your Mumbai location and courier timings. Custom orders may take longer; I'll discuss the timeline with you when you order.",
     },
     {
       id: 5,
-      category: "returns",
-      question: "What is your return policy?",
+      category: "payment",
+      question: "What payment methods do you accept?",
       answer:
-        "We offer a 30-day return policy from the date of delivery. Items must be unused, in original packaging with tags attached. Some items like undergarments and personalized products are not returnable.",
+        "Cash on Delivery only for all orders. Please have cash ready for the courier when your handmade item arrives.",
     },
     {
       id: 6,
       category: "returns",
-      question: "How do I return an item?",
+      question: "Can I return or exchange a product?",
       answer:
-        "Login to your account, go to 'My Orders', select the item you want to return, and click 'Return Item'. We'll arrange free pickup from your address within 2-3 business days.",
+        "If there's any problem, please contact me within 2 days. I handle returns or exchanges personally. Custom or personalized items are generally not returnable unless damaged.",
     },
     {
       id: 7,
-      category: "payment",
-      question: "What payment methods do you accept?",
+      category: "custom",
+      question: "Can I choose colors or materials for my custom order?",
       answer:
-        "We accept all major credit/debit cards, UPI, net banking, digital wallets, and Cash on Delivery (COD) for orders up to ₹5000.",
+        "Absolutely! Let me know your preferences and I'll find the best materials to make your unique piece.",
     },
     {
       id: 8,
-      category: "payment",
-      question: "Is it safe to pay online on your website?",
+      category: "other",
+      question: "How do I contact you?",
       answer:
-        "Yes, absolutely. We use 256-bit SSL encryption and comply with PCI DSS standards. All payment information is securely processed through trusted payment gateways.",
-    },
-    {
-      id: 9,
-      category: "sizing",
-      question: "How do I find the right size?",
-      answer:
-        "Please refer to our detailed size guide for each product. Sizes may vary between brands, so always check the specific measurements provided for each item.",
-    },
-    {
-      id: 10,
-      category: "sizing",
-      question: "What if the size doesn't fit?",
-      answer:
-        "If the size doesn't fit, you can easily exchange it within 30 days. We offer free pickup and delivery for size exchanges, subject to availability.",
-    },
-    {
-      id: 11,
-      category: "account",
-      question: "How do I create an account?",
-      answer:
-        "Click on 'Sign Up' at the top of the page, provide your email and create a password. You can also sign up using your Google or Facebook account for quick registration.",
-    },
-    {
-      id: 12,
-      category: "account",
-      question: "I forgot my password. How do I reset it?",
-      answer:
-        "Click on 'Forgot Password' on the login page, enter your registered email address, and we'll send you a password reset link within minutes.",
+        "Call or WhatsApp me directly at +91 9140847529, or use the website contact form. You always speak to the maker!",
     },
   ];
 
@@ -106,24 +78,24 @@ const FAQ = () => {
       count: faqData.filter((item) => item.category === "shipping").length,
     },
     {
-      id: "returns",
-      name: "Returns",
-      count: faqData.filter((item) => item.category === "returns").length,
-    },
-    {
       id: "payment",
       name: "Payment",
       count: faqData.filter((item) => item.category === "payment").length,
     },
     {
-      id: "sizing",
-      name: "Sizing",
-      count: faqData.filter((item) => item.category === "sizing").length,
+      id: "returns",
+      name: "Returns",
+      count: faqData.filter((item) => item.category === "returns").length,
     },
     {
-      id: "account",
-      name: "Account",
-      count: faqData.filter((item) => item.category === "account").length,
+      id: "custom",
+      name: "Custom Orders",
+      count: faqData.filter((item) => item.category === "custom").length,
+    },
+    {
+      id: "other",
+      name: "Other",
+      count: faqData.filter((item) => item.category === "other").length,
     },
   ];
 
@@ -151,8 +123,9 @@ const FAQ = () => {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             Frequently Asked Questions
           </h1>
-          <p className="text-xl text-gray-600">
-            Find answers to common questions about shopping with ClothStore
+          <p className="text-xl text-gray-600 max-w-xl mx-auto">
+            Find answers to common questions about my handmade products, custom
+            work, and local delivery in Mumbai
           </p>
         </div>
 
@@ -164,7 +137,7 @@ const FAQ = () => {
             placeholder="Search for questions..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-400 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-transparent"
           />
         </div>
 
@@ -176,7 +149,7 @@ const FAQ = () => {
               onClick={() => setActiveCategory(category.id)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 activeCategory === category.id
-                  ? "bg-primary-400 text-white"
+                  ? "bg-amber-400 text-white"
                   : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
               }`}
             >
@@ -212,7 +185,6 @@ const FAQ = () => {
                     <FiChevronDown className="h-5 w-5 text-gray-500 flex-shrink-0" />
                   )}
                 </button>
-
                 {openItems[item.id] && (
                   <div className="px-6 pb-4">
                     <div className="pt-2 border-t border-gray-100">
@@ -228,28 +200,32 @@ const FAQ = () => {
         </div>
 
         {/* Still Need Help */}
-        <div className="bg-primary-50 border border-primary-200 rounded-lg p-6 mt-12 text-center">
+        <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 mt-12 text-center">
           <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            Still need help?
+            Need more help? Just ask!
           </h3>
           <p className="text-gray-600 mb-4">
-            Can't find what you're looking for? Our customer support team is
-            here to help.
+            I'm based in Mumbai and handle all orders personally — from creation
+            to delivery. Feel free to call or WhatsApp. You'll always speak
+            directly to the maker.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="bg-primary-400 text-white px-6 py-2 rounded-lg hover:bg-primary-500 transition-colors"
+              className="bg-amber-400 text-white px-6 py-2 rounded-lg hover:bg-amber-500 transition-colors"
             >
-              Contact Support
+              Contact Me
             </a>
             <a
               href="tel:+919876543210"
-              className="border border-primary-400 text-primary-600 px-6 py-2 rounded-lg hover:bg-primary-50 transition-colors"
+              className="border border-amber-400 text-amber-700 px-6 py-2 rounded-lg hover:bg-amber-50 transition-colors"
             >
-              Call Us: +91 98765 43210
+              Call / WhatsApp: +91 9140847529
             </a>
           </div>
+          <p className="mt-4 text-sm text-amber-600 italic">
+            Thank you for supporting a Mumbai-based artisan business!
+          </p>
         </div>
       </div>
     </div>

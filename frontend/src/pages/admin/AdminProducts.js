@@ -166,9 +166,8 @@ const AdminProducts = () => {
         description: "Comfortable cotton t-shirt",
         price: "599",
         originalPrice: "799",
-        category: "Men",
-        subCategory: "Shirts",
-        sizes: "S,M,L,XL",
+        category: "Hand made products",
+        subCategory: "Decorations",
         colors: "Red,Blue,Black",
         images: "https://example.com/image1.jpg,https://example.com/image2.jpg",
         stock: "50",
@@ -205,9 +204,6 @@ const AdminProducts = () => {
               originalPrice: item.originalPrice || "",
               category: item.category || "",
               subCategory: item.subCategory || "",
-              sizes: Array.isArray(item.sizes)
-                ? item.sizes.join(",")
-                : item.sizes || "",
               colors: Array.isArray(item.colors)
                 ? item.colors.join(",")
                 : item.colors || "",
@@ -477,10 +473,10 @@ const AdminProducts = () => {
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         >
                           <option value="">Select Category</option>
-                          <option value="Men">Men</option>
-                          <option value="Women">Women</option>
-                          <option value="Kids">Kids</option>
-                          <option value="Accessories">Accessories</option>
+                          <option value="Hand made products">
+                            Hand made products
+                          </option>
+                          <option value="Others">Others</option>
                         </select>
                       </div>
 
@@ -558,61 +554,20 @@ const AdminProducts = () => {
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Sub Category
+                          Sub Category *
                         </label>
-                        <input
-                          type="text"
+                        <select
                           value={product.subCategory}
                           onChange={(e) =>
                             updateProduct(index, "subCategory", e.target.value)
                           }
-                          placeholder="Sub category"
                           className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Variants */}
-                  <div>
-                    <h4 className="text-sm font-semibold text-gray-900 mb-3">
-                      Variants
-                    </h4>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Sizes
-                        </label>
-                        <input
-                          type="text"
-                          value={product.sizes}
-                          onChange={(e) =>
-                            updateProduct(index, "sizes", e.target.value)
-                          }
-                          placeholder="S,M,L,XL"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                        <p className="mt-1 text-xs text-gray-500">
-                          Separate with commas
-                        </p>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          Colors
-                        </label>
-                        <input
-                          type="text"
-                          value={product.colors}
-                          onChange={(e) =>
-                            updateProduct(index, "colors", e.target.value)
-                          }
-                          placeholder="Red,Blue,Black"
-                          className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        />
-                        <p className="mt-1 text-xs text-gray-500">
-                          Separate with commas
-                        </p>
+                        >
+                          <option value="">Select subcategory</option>
+                          <option value="Decorations">Decorations</option>
+                          <option value="Art & Craft">Art & Craft</option>
+                          <option value="Others">Others</option>
+                        </select>
                       </div>
                     </div>
                   </div>

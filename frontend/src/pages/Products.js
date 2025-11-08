@@ -68,20 +68,15 @@ const Products = () => {
 
   const categories = [
     { value: "", label: "All Categories" },
-    { value: "Men", label: "Men's Fashion" },
-    { value: "Women", label: "Women's Fashion" },
-    { value: "Kids", label: "Kids Fashion" },
-    { value: "Accessories", label: "Accessories" },
+    { value: "Hand made products", label: "Hand made products" },
+    { value: "Others", label: "Others" },
   ];
 
   const subCategories = [
     { value: "", label: "All Sub-categories" },
-    { value: "Topwear", label: "Topwear" },
-    { value: "Bottomwear", label: "Bottomwear" },
-    { value: "Winterwear", label: "Winterwear" },
-    { value: "Shoes", label: "Shoes" },
-    { value: "Bags", label: "Bags" },
-    { value: "Jewelry", label: "Jewelry" },
+    { value: "Decorations", label: "Decorations" },
+    { value: "Art & Craft", label: "Art & Craft" },
+    { value: "Others", label: "Others" },
   ];
 
   const sortOptions = [

@@ -8,9 +8,9 @@ import {
   FiStar,
   FiShoppingCart,
   FiHeart,
-  FiTruck,
-  FiRefreshCw,
-  FiShield,
+  FiAward,
+  FiUsers,
+  FiPackage,
 } from "react-icons/fi";
 
 const ProductDetail = () => {
@@ -68,27 +68,6 @@ const ProductDetail = () => {
 
   // ✅ FIXED: Correct parameter order
   const handleAddToCart = () => {
-    // ✅ Validate selections
-    if (!product.sizes || product.sizes.length === 0) {
-      toast.error("Size not available for this product");
-      return;
-    }
-
-    if (!product.colors || product.colors.length === 0) {
-      toast.error("Color not available for this product");
-      return;
-    }
-
-    if (!selectedSize) {
-      toast.error("Please select a size");
-      return;
-    }
-
-    if (!selectedColor) {
-      toast.error("Please select a color");
-      return;
-    }
-
     if (quantity <= 0) {
       toast.error("Please select a valid quantity");
       return;
@@ -151,10 +130,7 @@ const ProductDetail = () => {
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
             Product not found
           </h2>
-          <Link
-            to="/products"
-            className="text-primary-600 hover:text-primary-700"
-          >
+          <Link to="/products" className="text-amber-600 hover:text-amber-700">
             Back to Products
           </Link>
         </div>
@@ -175,7 +151,7 @@ const ProductDetail = () => {
         <nav className="flex mb-8" aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-1 md:space-x-3">
             <li className="inline-flex items-center">
-              <Link to="/" className="text-gray-700 hover:text-primary-600">
+              <Link to="/" className="text-gray-700 hover:text-amber-600">
                 Home
               </Link>
             </li>
@@ -194,7 +170,7 @@ const ProductDetail = () => {
                 </svg>
                 <Link
                   to="/products"
-                  className="ml-1 text-gray-700 hover:text-primary-600 md:ml-2"
+                  className="ml-1 text-gray-700 hover:text-amber-600 md:ml-2"
                 >
                   Products
                 </Link>
@@ -224,14 +200,19 @@ const ProductDetail = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Product Images */}
           <div>
-            <div className="mb-4">
+            <div className="mb-4 relative">
               <img
                 src={
                   product.images?.[selectedImage] || "/placeholder-image.jpg"
                 }
                 alt={product.name}
-                className="w-full h-96 object-cover rounded-lg"
+                className="w-full h-96 object-cover rounded-lg shadow-md"
               />
+              {/* Handcrafted Badge on Image */}
+              <div className="absolute top-4 left-4 bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-xs font-semibold flex items-center shadow-sm">
+                <FiAward className="mr-1 h-3 w-3" />
+                Handcrafted
+              </div>
             </div>
             <div className="flex space-x-2 overflow-x-auto">
               {product.images?.map((image, index) => (
@@ -240,7 +221,7 @@ const ProductDetail = () => {
                   onClick={() => setSelectedImage(index)}
                   className={`flex-shrink-0 w-20 h-20 rounded border-2 overflow-hidden transition-colors ${
                     selectedImage === index
-                      ? "border-primary-600"
+                      ? "border-amber-600"
                       : "border-gray-300 hover:border-gray-400"
                   }`}
                 >
@@ -258,16 +239,20 @@ const ProductDetail = () => {
           <div>
             <div className="mb-4">
               {product.bestseller && (
-                <span className="inline-block bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full font-semibold mb-2">
-                  🏆 Bestseller
+                <span className="inline-block bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full font-semibold mb-2">
+                  ⭐ Customer Favorite
                 </span>
               )}
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 {product.name}
               </h1>
 
+              <p className="text-sm text-gray-600 mb-4 italic">
+                ✨ Each piece is uniquely handcrafted with care
+              </p>
+
               {/* Rating */}
-              <div className="flex items-center mb-4">
+              {/* <div className="flex items-center mb-4">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
                     <FiStar
@@ -280,11 +265,7 @@ const ProductDetail = () => {
                     />
                   ))}
                 </div>
-                <span className="text-sm text-gray-600 ml-2">
-                  {(product.rating || 0).toFixed(1)} ({product.numReviews || 0}{" "}
-                  reviews)
-                </span>
-              </div>
+              </div> */}
 
               {/* Price */}
               <div className="flex items-center space-x-4 mb-6">
@@ -305,14 +286,16 @@ const ProductDetail = () => {
                 )}
               </div>
 
-              <p className="text-gray-700 mb-6">{product.description}</p>
+              <p className="text-gray-700 mb-6 leading-relaxed">
+                {product.description}
+              </p>
 
               {/* Size Selection */}
               {product.sizes && product.sizes.length > 0 && (
                 <div className="mb-6">
                   <h3 className="text-sm font-medium text-gray-900 mb-3">
                     Size:{" "}
-                    <span className="text-primary-600 font-semibold">
+                    <span className="text-amber-600 font-semibold">
                       {selectedSize}
                     </span>
                   </h3>
@@ -323,8 +306,8 @@ const ProductDetail = () => {
                         onClick={() => setSelectedSize(size)}
                         className={`px-4 py-2 border-2 rounded-md transition-all font-medium ${
                           selectedSize === size
-                            ? "border-primary-600 bg-primary-50 text-primary-600 shadow-sm"
-                            : "border-gray-300 text-gray-700 hover:border-primary-300"
+                            ? "border-amber-600 bg-amber-50 text-amber-700 shadow-sm"
+                            : "border-gray-300 text-gray-700 hover:border-amber-300"
                         }`}
                       >
                         {size}
@@ -339,7 +322,7 @@ const ProductDetail = () => {
                 <div className="mb-6">
                   <h3 className="text-sm font-medium text-gray-900 mb-3">
                     Color:{" "}
-                    <span className="text-primary-600 font-semibold">
+                    <span className="text-amber-600 font-semibold">
                       {selectedColor}
                     </span>
                   </h3>
@@ -350,8 +333,8 @@ const ProductDetail = () => {
                         onClick={() => setSelectedColor(color)}
                         className={`px-4 py-2 border-2 rounded-md transition-all font-medium ${
                           selectedColor === color
-                            ? "border-primary-600 bg-primary-50 text-primary-600 shadow-sm"
-                            : "border-gray-300 text-gray-700 hover:border-primary-300"
+                            ? "border-amber-600 bg-amber-50 text-amber-700 shadow-sm"
+                            : "border-gray-300 text-gray-700 hover:border-amber-300"
                         }`}
                       >
                         {color}
@@ -387,9 +370,12 @@ const ProductDetail = () => {
                     +
                   </button>
                 </div>
-                <p className="text-sm text-gray-600 mt-2">
-                  📦 {product.stock || 0} items available in stock
-                </p>
+                {product.stock && product.stock < 5 && (
+                  <p className="text-sm text-orange-600 mt-2 font-medium">
+                    🔥 Only {product.stock} pieces available - Limited handmade
+                    batch
+                  </p>
+                )}
               </div>
 
               {/* Action Buttons */}
@@ -397,36 +383,52 @@ const ProductDetail = () => {
                 <button
                   onClick={handleAddToCart}
                   disabled={!product.stock || product.stock === 0}
-                  className="flex-1 bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-primary-600 flex items-center justify-center transition-all shadow-md hover:shadow-lg"
+                  className="flex-1 bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-amber-600 flex items-center justify-center transition-all shadow-md hover:shadow-lg"
                 >
                   <FiShoppingCart className="mr-2 h-5 w-5" />
                   {product.stock ? "Add to Cart" : "Out of Stock"}
                 </button>
-                <button className="px-6 py-3 border-2 border-gray-300 rounded-lg hover:bg-gray-50 hover:border-primary-300 flex items-center justify-center transition-all">
-                  <FiHeart className="h-5 w-5 text-gray-700" />
-                </button>
               </div>
 
-              {/* Features */}
+              {/* Handmade Product Features */}
               <div className="border-t pt-6">
+                <h3 className="text-sm font-semibold text-gray-900 mb-4">
+                  Why Choose Handmade?
+                </h3>
                 <div className="grid grid-cols-1 gap-4">
                   <div className="flex items-start">
-                    <FiTruck className="h-5 w-5 text-primary-600 mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-gray-700">
-                      Free shipping on orders above ₹999
-                    </span>
+                    <FiAward className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">
+                        Superior Craftsmanship
+                      </p>
+                      <p className="text-xs text-gray-600">
+                        Made with skill, attention to detail, and passion
+                      </p>
+                    </div>
                   </div>
                   <div className="flex items-start">
-                    <FiRefreshCw className="h-5 w-5 text-primary-600 mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-gray-700">
-                      30 days return policy
-                    </span>
+                    <FiUsers className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">
+                        Support Local Artisans
+                      </p>
+                      <p className="text-xs text-gray-600">
+                        Empowering craftspeople and their communities
+                      </p>
+                    </div>
                   </div>
                   <div className="flex items-start">
-                    <FiShield className="h-5 w-5 text-primary-600 mr-3 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-gray-700">
-                      100% secure payments
-                    </span>
+                    <FiPackage className="h-5 w-5 text-amber-600 mr-3 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">
+                        Unique & One-of-a-Kind
+                      </p>
+                      <p className="text-xs text-gray-600">
+                        Each piece may have slight variations, adding to its
+                        charm
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
