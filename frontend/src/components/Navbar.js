@@ -29,14 +29,14 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center group">
+          <Link to="/" className="flex items-center group flex-shrink-0">
             <div className="flex items-center">
-              <FiHeart className="h-6 w-6 text-amber-600 mr-2 group-hover:text-amber-700 transition-colors" />
-              <span className="text-2xl font-bold text-amber-600 group-hover:text-amber-700 transition-colors">
-                djkwnebhdwbd
+              <FiHeart className="h-5 w-5 sm:h-6 sm:w-6 text-amber-600 mr-1 sm:mr-2 group-hover:text-amber-700 transition-colors" />
+              <span className="text-lg sm:text-2xl font-bold text-amber-600 group-hover:text-amber-700 transition-colors">
+                ProductHandmade
               </span>
             </div>
-            <span className="ml-2 text-xs text-gray-500 hidden sm:block italic">
+            <span className="ml-2 text-xs text-gray-500 hidden lg:block italic">
               Built with Love
             </span>
           </Link>
@@ -117,10 +117,10 @@ const Navbar = () => {
           </div>
 
           {/* Right side items */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             {/* Cart Icon */}
             <Link to="/cart" className="relative p-2 group">
-              <FiShoppingCart className="h-6 w-6 text-gray-700 group-hover:text-amber-600 transition-colors" />
+              <FiShoppingCart className="h-5 w-5 sm:h-6 sm:w-6 text-gray-700 group-hover:text-amber-600 transition-colors" />
               {getCartCount() > 0 && (
                 <span className="absolute -top-1 -right-1 bg-amber-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold shadow-md">
                   {getCartCount()}
@@ -136,7 +136,7 @@ const Navbar = () => {
                   className="flex items-center space-x-2 text-gray-700 hover:text-amber-600 p-2 transition-colors"
                 >
                   <FiUser className="h-5 w-5" />
-                  <span className="hidden md:block font-medium">
+                  <span className="hidden lg:block font-medium">
                     {user?.name}
                   </span>
                 </button>
@@ -167,7 +167,7 @@ const Navbar = () => {
                 )}
               </div>
             ) : (
-              <div className="flex items-center space-x-2">
+              <div className="hidden md:flex items-center space-x-2">
                 <Link
                   to="/login"
                   className="text-gray-700 hover:text-amber-600 px-3 py-2 transition-colors font-medium"
@@ -220,7 +220,7 @@ const Navbar = () => {
                 className="block px-3 py-2 text-gray-700 hover:text-amber-600 hover:bg-amber-50 rounded-md transition-colors"
                 onClick={() => setIsOpen(false)}
               >
-                Our Story
+                About
               </Link>
               <Link
                 to="/contact"
@@ -229,6 +229,26 @@ const Navbar = () => {
               >
                 Contact
               </Link>
+
+              {/* Login/Register for Mobile (when not authenticated) */}
+              {!isAuthenticated && (
+                <div className="border-t border-gray-200 mt-2 pt-2 space-y-1">
+                  <Link
+                    to="/login"
+                    className="block px-3 py-2 text-gray-700 hover:text-amber-600 hover:bg-amber-50 rounded-md transition-colors font-medium"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="block px-3 py-2 bg-amber-600 text-white hover:bg-amber-700 rounded-md transition-colors font-medium text-center"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Sign Up
+                  </Link>
+                </div>
+              )}
 
               {/* Admin Links - Mobile */}
               {isAuthenticated && user?.isAdmin && (
