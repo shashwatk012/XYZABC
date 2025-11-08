@@ -18,7 +18,7 @@ const Footer = () => {
           {/* Business Info */}
           <div>
             <h3 className="text-2xl font-bold text-amber-400 mb-4">
-              Handmade Karigari
+              Handmade Products
             </h3>
             <p className="text-amber-200 mb-4">
               Beautifully handmade by one artisan. Every piece crafted with
@@ -26,7 +26,7 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com/Handmade Karigari"
+                href="https://facebook.com/Handmade Products"
                 className="text-amber-300 hover:text-amber-400 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -34,7 +34,7 @@ const Footer = () => {
                 <FiFacebook className="h-5 w-5" />
               </a>
               <a
-                href="https://twitter.com/Handmade Karigari"
+                href="https://twitter.com/Handmade Products"
                 className="text-amber-300 hover:text-amber-400 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -42,7 +42,7 @@ const Footer = () => {
                 <FiTwitter className="h-5 w-5" />
               </a>
               <a
-                href="https://instagram.com/Handmade Karigari"
+                href="https://instagram.com/Handmade Products"
                 className="text-amber-300 hover:text-amber-400 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -50,7 +50,7 @@ const Footer = () => {
                 <FiInstagram className="h-5 w-5" />
               </a>
               <a
-                href="https://youtube.com/Handmade Karigari"
+                href="https://youtube.com/Handmade Products"
                 className="text-amber-300 hover:text-amber-400 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -141,7 +141,7 @@ const Footer = () => {
               <div className="flex items-center">
                 <FiMail className="h-5 w-5 text-amber-300 mr-2" />
                 <span className="text-amber-200">
-                  hello@Handmade Karigari.in
+                  hello@Handmade Products.in
                 </span>
               </div>
             </div>
@@ -150,7 +150,7 @@ const Footer = () => {
 
         <div className="border-t border-amber-700 mt-8 pt-8 text-center">
           <p className="text-amber-400 text-sm">
-            &copy; 2025 Handmade Karigari. Handmade with heart in Mumbai, India.
+            &copy; 2025 Handmade Products. Handmade with heart in Mumbai, India.
             |
             <Link to="/privacy" className="hover:text-amber-300 ml-1">
               Privacy Policy

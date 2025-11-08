@@ -54,7 +54,7 @@ const About = () => {
       <div className="bg-gradient-to-br from-amber-50 to-orange-100 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            About Handmade Karigari
+            About Handmade Products
           </h1>
           <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
             Welcome to my handmade journey! I'm passionate about creating
@@ -74,7 +74,7 @@ const About = () => {
               </h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  Hi! I'm the creator behind Handmade Karigari. What started as
+                  Hi! I'm the creator behind Handmade Products. What started as
                   a hobby and passion for making things by hand has now become
                   my dream business.
                 </p>
@@ -87,13 +87,13 @@ const About = () => {
                 </p>
                 <p>
                   After friends and family kept encouraging me to share my work
-                  with the world, I decided to take the leap. Handmade Karigari
+                  with the world, I decided to take the leap. Handmade Products
                   is my way of bringing handmade, thoughtful creations to people
                   who appreciate the difference quality craftsmanship makes.
                 </p>
                 <p className="text-amber-700 font-medium italic">
                   Every item you see here is made by me, in my workshop, with
-                  love and dedication. When you buy from Handmade Karigari,
+                  love and dedication. When you buy from Handmade Products,
                   you're getting a genuinely handmade piece, not mass-produced
                   factory goods.
                 </p>
@@ -164,7 +164,7 @@ const About = () => {
                 </h3>
               </div>
               <p className="text-gray-600 leading-relaxed">
-                To grow Handmade Karigari into a trusted brand known for unique,
+                To grow Handmade Products into a trusted brand known for unique,
                 handcrafted items. I dream of expanding my skills, creating more
                 diverse products, and building a community of people who value
                 handmade artistry as much as I do.
@@ -247,11 +247,11 @@ const About = () => {
           </div>
         </div>
 
-        {/* Why Choose Handmade Karigari */}
+        {/* Why Choose Handmade Products */}
         <div className="mb-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Why Choose Handmade Karigari?
+              Why Choose Handmade Products?
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               When you shop with me, you're getting genuine handmade quality and
@@ -523,7 +523,7 @@ const About = () => {
                     <p className="text-gray-600 leading-relaxed">
                       Right now, it's just me in my workshop, pouring my heart
                       into every piece I create. But I believe that with your
-                      support and encouragement, Handmade Karigari can grow into
+                      support and encouragement, Handmade Products can grow into
                       something truly special. Every order, every review, and
                       every share helps me take one step closer to that vision.
                     </p>
@@ -591,7 +591,7 @@ const About = () => {
                     </h4>
                     <p className="text-gray-600 leading-relaxed">
                       Your support today helps lay the foundation for tomorrow.
-                      When you buy from Handmade Karigari, you're not just
+                      When you buy from Handmade Products, you're not just
                       getting a handmade product - you're helping build a future
                       where skilled artisans have sustainable livelihoods and
                       their crafts continue to thrive. Every purchase is a vote
@@ -608,7 +608,7 @@ const About = () => {
                 "Today, I craft alone. Tomorrow, with your love and support,
                 we'll build a thriving community of artisans together."
               </p>
-              <p className="text-gray-600 mt-2">— Handmade Karigari Founder</p>
+              <p className="text-gray-600 mt-2">— Handmade Products Founder</p>
             </div>
           </div>
         </div>
@@ -629,7 +629,7 @@ const About = () => {
             <div>
               <FiMail className="h-8 w-8 text-amber-600 mx-auto mb-4" />
               <h4 className="font-semibold text-gray-900 mb-2">Email Me</h4>
-              <p className="text-gray-600">hello@Handmade Karigari.in</p>
+              <p className="text-gray-600">hello@Handmade Products.in</p>
             </div>
 
             <div>
@@ -653,7 +653,7 @@ const About = () => {
               <h4 className="font-semibold text-gray-900 mb-2">
                 Follow My Journey
               </h4>
-              <p className="text-gray-600">@Handmade Karigari on Instagram</p>
+              <p className="text-gray-600">@Handmade Products on Instagram</p>
             </div>
           </div>
 
