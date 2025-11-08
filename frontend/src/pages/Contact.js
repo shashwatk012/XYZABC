@@ -78,7 +78,7 @@ const Contact = () => {
                   <FiMail className="h-6 w-6 text-primary-400 mt-1 mr-4" />
                   <div>
                     <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                    <p className="text-gray-600">hello@Karigari.in</p>
+                    <p className="text-gray-600">hello@Handmade Karigari.in</p>
                     <p className="text-gray-500 text-sm">
                       We'll respond within 24 hours
                     </p>
