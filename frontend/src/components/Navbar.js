@@ -33,7 +33,7 @@ const Navbar = () => {
             <div className="flex items-center">
               <FiHeart className="h-6 w-6 text-amber-600 mr-2 group-hover:text-amber-700 transition-colors" />
               <span className="text-2xl font-bold text-amber-600 group-hover:text-amber-700 transition-colors">
-                Handmade Products
+                XYZABC
               </span>
             </div>
             <span className="ml-2 text-xs text-gray-500 hidden sm:block italic">
